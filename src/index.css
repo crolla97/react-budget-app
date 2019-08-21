@@ -35,3 +35,26 @@ input[type=email]:not(.browser-default):focus:not([readonly]) + label,
 input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   color: #ec407a !important;
 }
+
+.item-summary {
+  padding-top: 5px;
+  margin-bottom: 0;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-date {
+  margin-top: -5px;
+}
+
+.delete-btn {
+  margin-top: 10px;
+}
+
+.filter-card {
+  margin-top: 40px;
+  padding: 5px;
+}

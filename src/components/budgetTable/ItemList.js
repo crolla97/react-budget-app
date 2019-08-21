@@ -1,15 +1,14 @@
 import React from 'react';
+import ItemSummary from './ItemSummary';
 
-const ItemList = () => {
+const ItemList = ({ items }) => {
   return (
     <div className="project-list section">
-    
-      <div className="card z-depth-0 item-summary">
-        <div className="card-content grey-text darken-3">
-          <span className="card-title">Car Payment</span>
-        </div>
-      </div>
-
+      { items && items.map(item => {
+        return (
+          <ItemSummary item={item} key={item.id} />
+        )
+      })}
     </div>
   )
 }
