@@ -1,10 +1,4 @@
-const initState = {
-  items: [
-    {id: '1', title: 'Car Payment', type: 'expense', amount: '233'},
-    {id: '2', title: 'Home Insurance', type: 'expense', amount: '20'},
-    {id: '3', title: 'Dantes', type: 'income', amount: '70'}
-  ]
-}
+const initState = {}
 
 const itemReducer = (state = initState, action) => {
   switch(action.type) {
@@ -13,6 +7,12 @@ const itemReducer = (state = initState, action) => {
       return state
     case 'CREATE_ITEM_ERROR':
       console.log('create item error', action.error)
+      return state
+    case 'ITEM_DELETED':
+      console.log('item deleted');
+      return state
+    case 'ERROR_REMOVING_ITEM':
+      console.log('error removing item', action.error);
       return state
     default:
       return state
