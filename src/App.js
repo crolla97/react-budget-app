@@ -1,27 +1,20 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Navbar from './components/layouts/Navbar';
-import DashboardPage from './components/dashboard/DashboardPage';
-import SignInPage from './components/auth/SignInPage';
-import SignUpPage from './components/auth/SignUpPage';
-import CreateItemPage from './components/budgetTable/CreateItemPage';
+import { connect } from 'react-redux';
+import Router from './Router';
 
 class App extends Component {
   render() {
-    return (
-      <BrowserRouter>
-        <div className="App">
-          <Navbar />
-          <Switch>
-            <Route exact path='/' component={DashboardPage} />
-            <Route path='/signin' component={SignInPage} />
-            <Route path='/signup' component={SignUpPage} />
-            <Route path='/create' component={CreateItemPage} />
-          </Switch>
-        </div>
-      </BrowserRouter>
-    );
+    const { auth } = this.props
+
+    if (auth.isLoaded) return <Router />
+    if (auth.isEmpty) return <p>Loading...</p>
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth
+  }
+}
+
+export default connect(mapStateToProps)(App);

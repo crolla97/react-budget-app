@@ -7,9 +7,9 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 
+
 class DashboardPage extends Component {
   render() {
-    // console.log(this.props);
     const { items, auth } = this.props;
     if (!auth.uid) return <Redirect to='/signin' />
 
@@ -22,9 +22,10 @@ class DashboardPage extends Component {
         </div>
         <div className="row">
           <div className="col s12 m7">
-            <ItemList items={items} />
+            { auth.isLoaded && <ItemList items={items} />}
+            { auth.isEmpty && <p>Loading...</p> }
           </div>
-          <div className="col s12 m4 offset-m1">
+          <div className="col s12 m5">
             <SidePanel />
           </div>
         </div>

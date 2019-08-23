@@ -42,7 +42,7 @@ class SignUpPage extends Component {
             <input type="text" id="lastName" onChange={this.handleChange}/>
           </div>
           <div className="div input-field">
-            <button className="btn pink lighten-1 z-depth-0">Login</button>
+            <button className="btn pink lighten-1 z-depth-0">Create Account</button>
           </div>
         </form>
       </div>

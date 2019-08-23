@@ -18,6 +18,7 @@ class CreateItemPage extends Component {
     e.preventDefault();    
     // console.log(this.state);
     this.props.createItem(this.state)
+    this.props.history.push('/')
   }
   render() {
     const { auth } = this.props;
@@ -41,7 +42,7 @@ class CreateItemPage extends Component {
             <option value="income">Income</option>
           </select>
           <div className="div input-field">
-            <button className="btn pink lighten-1 z-depth-0">Login</button>
+            <button className="btn pink lighten-1 z-depth-0">Create Item</button>
           </div>
         </form>
       </div>
