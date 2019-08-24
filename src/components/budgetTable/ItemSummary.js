@@ -17,14 +17,7 @@ class ItemSummary extends Component {
           <div className="card-container">
             <div>
               <div className="card-title">{item.title}</div>
-              <p className="card-date grey-text darken-4">{moment(item.createdAt.toDate()).calendar(null, {
-                sameDay: '[Today]',
-                nextDay: '[Tomorrow]',
-                nextWeek: 'dddd',
-                lastDay: '[Yesterday]',
-                lastWeek: '[Last] dddd',
-                sameElse: 'DD/MM/YYYY'
-            })}</p>
+              <p className="card-date grey-text darken-4"></p>
             </div>
             <div className="card-title">£{item.amount}</div>
             <button className="btn btn-floating blue delete-btn" onClick={this.deleteItem}>X</button>
@@ -35,10 +28,10 @@ class ItemSummary extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteItem: (item) => dispatch(deleteItem(item))
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     deleteItem: (item) => dispatch(deleteItem(item))
+//   }
+// }
 
-export default connect(null, mapDispatchToProps)(ItemSummary);
+export default ItemSummary;

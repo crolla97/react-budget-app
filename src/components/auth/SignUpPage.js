@@ -50,10 +50,10 @@ class SignUpPage extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    signUp: (creds) => dispatch(signUp(creds))
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     signUp: (creds) => dispatch(signUp(creds))
+//   }
+// }
 
-export default connect(null, mapDispatchToProps)(SignUpPage);
+export default SignUpPage;

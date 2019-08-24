@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { signIn } from '../../store/actions/authActions';
+// import { connect } from 'react-redux';
+// import { signIn } from '../../store/actions/authActions';
 
 class SignInPage extends Component {
   state = {
@@ -17,7 +17,7 @@ class SignInPage extends Component {
     this.props.signIn(this.state)
   }
   render() {
-    const { authError } = this.props;
+    // const { authError } = this.props;
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
@@ -32,9 +32,6 @@ class SignInPage extends Component {
           </div>
           <div className="div input-field">
             <button className="btn pink lighten-1 z-depth-0">Login</button>
-            <div className="red-text center">
-              { authError ? <p>{authError}</p> : null }
-            </div>
           </div>
         </form>
       </div>
@@ -42,16 +39,16 @@ class SignInPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    authError: state.auth.authError
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     authError: state.auth.authError
+//   }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    signIn: (creds) => dispatch(signIn(creds))
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     signIn: (creds) => dispatch(signIn(creds))
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignInPage);
+export default SignInPage;

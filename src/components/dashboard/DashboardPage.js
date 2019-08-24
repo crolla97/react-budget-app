@@ -2,16 +2,13 @@ import React, { Component } from 'react';
 import SidePanel from './SidePanel';
 import ItemList from '../budgetTable/ItemList';
 import Filter from './Filter';
-import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { Redirect } from 'react-router-dom';
 
 class DashboardPage extends Component {
   render() {
     // console.log(this.props);
     const { items, auth } = this.props;
-    if (!auth.uid) return <Redirect to='/signin' />
+    // if (!auth.uid) return <Redirect to='/signin' />
 
     return (
       <div className="dashboard container">
@@ -34,16 +31,10 @@ class DashboardPage extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    items: state.firestore.ordered.fetchItems,
-    auth: state.firebase.auth
+    items: state.item,
   }
 }
 
-export default compose(
-  connect(mapStateToProps),
-  firestoreConnect((props) => [{
-    collection: `users/${props.auth.uid}/items`,
-    storeAs: 'fetchItems'
-  }])
-  )(DashboardPage);
+export default connect(mapStateToProps)(DashboardPage);

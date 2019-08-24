@@ -9,6 +9,7 @@ import { firebase} from './config/fbConfig';
 import { Provider } from 'react-redux';
 import { ReactReduxFirebaseProvider} from 'react-redux-firebase';
 import rootReducer from './store/reducers/rootReducer';
+import { startSetItems } from './store/actions/itemActions';
 import thunk from 'redux-thunk';
 
 // react-redux-firebase config
@@ -30,11 +31,16 @@ const rrfProps = {
   createFirestoreInstance
 };
 
-ReactDOM.render(
+const jsx = (
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
       <App/>
     </ReactReduxFirebaseProvider>
-  </Provider>, document.getElementById('root'));
+  </Provider>
+)
+ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
 
+store.dispatch(startSetItems()).then(() => {
+  ReactDOM.render(jsx, document.getElementById('root'));
+})
 serviceWorker.unregister();
