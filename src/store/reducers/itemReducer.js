@@ -16,9 +16,9 @@ const itemReducer = (state = initState, action) => {
     case 'SET_ITEMS':
       console.log('items set', action.items);
       return action.items
-    case 'ITEM_DELETED':
+    case 'DELETE_ITEM':
       console.log('item deleted');
-      return state
+      return state.filter(({ id }) => id !== action.id);
     case 'ERROR_REMOVING_ITEM':
       console.log('error removing item', action.error);
       return state

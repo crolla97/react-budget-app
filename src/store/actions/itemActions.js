@@ -1,4 +1,5 @@
 import { firestore } from '../../config/fbConfig';
+import moment from 'moment'
 
 // ADD_ITEM
 export const addItem = (item) => ({
@@ -15,7 +16,7 @@ export const startAddItem = (itemData = {}) => {
       type = '',
       createdAt = 0
     } = itemData;
-    const item = { title, amount, type, createdAt }
+    const item = { title, amount: parseInt(amount), type, createdAt: createdAt.unix() }
     firestore.collection('users').doc('4IfTXZrtCmPzFK0urNkarHkePve2').collection('items').add({
       item})
       .then((docRef) => {
@@ -27,16 +28,20 @@ export const startAddItem = (itemData = {}) => {
   }
 };
 
-export const deleteItem = (itemId) => {
+// DELETE_ITEM
+
+export const deleteItem = ({ id }) => ({
+  type: 'DELETE_ITEM',
+  id
+})
+
+export const startDeleteItem = ({ id }) => {
   return(dispatch, getState) => {
-    const authId = getState().firebase.auth.uid;
-    firestore.collection('users').doc(authId).collection('items').doc(`${itemId}`).delete(
-    ).then(() => {
-      dispatch({ type: 'ITEM_DELETED' });
-    }).catch((err) => {
-      dispatch({ type: 'ERROR_REMOVING_ITEM', err})
-    })
-  }
+    // const authId = getState().firebase.auth.uid;
+    firestore.collection('users').doc('4IfTXZrtCmPzFK0urNkarHkePve2').collection('items').doc(`${id}`).delete().then(() => {
+      dispatch(deleteItem({ id }));
+    });
+  };
 };
 
 // SET_ITEMS

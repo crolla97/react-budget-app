@@ -3,13 +3,11 @@ import SidePanel from './SidePanel';
 import ItemList from '../budgetTable/ItemList';
 import Filter from './Filter';
 import { connect } from 'react-redux';
+import visibleItems from '../../store/selectors/visibleItems';
 
 class DashboardPage extends Component {
   render() {
-    // console.log(this.props);
     const { items, auth } = this.props;
-    // if (!auth.uid) return <Redirect to='/signin' />
-
     return (
       <div className="dashboard container">
         <div className="row">
@@ -33,7 +31,7 @@ class DashboardPage extends Component {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    items: state.item,
+    items: visibleItems(state.item, state.filters)
   }
 }
 
