@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-// import { connect} from 'react-redux';
-// import { signOut } from '../../store/actions/authActions';
+import { connect} from 'react-redux';
+import { startSignOut } from '../../store/actions/authActions';
 
 const SignedInLinks = (props) => {
   // const { profile } = props
@@ -14,10 +14,10 @@ const SignedInLinks = (props) => {
   )
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     signOut: () => dispatch(signOut())
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOut: () => dispatch(startSignOut())
+  }
+}
 
-export default SignedInLinks;
+export default connect(null, mapDispatchToProps)(SignedInLinks);

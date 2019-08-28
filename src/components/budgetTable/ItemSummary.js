@@ -9,15 +9,19 @@ class ItemSummary extends Component {
   }
   render() {
     const { item } = this.props;
+    const itemColour = {
+      expense: "card item-summary red lighten-4",
+      income: "card item-summary green lighten-4"
+    }
     return (
       <div>
-        <div className="card item-summary red lighten-4">
+        <div className={itemColour[item.type]}>
           <div className="card-container">
             <div>
-              <div className="card-title">{item.title}</div>
+              <h6>{item.title}</h6>
               <p className="card-date grey-text darken-4">{moment.unix(item.createdAt).format("Do MMM YYYY")}</p>
             </div>
-            <div className="card-title">£{item.amount}</div>
+            <h6>£{item.amount}</h6>
             <button className="btn btn-floating blue delete-btn" onClick={this.startDeleteItem}>X</button>
           </div>
         </div>

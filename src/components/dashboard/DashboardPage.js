@@ -7,7 +7,7 @@ import visibleItems from '../../store/selectors/visibleItems';
 
 class DashboardPage extends Component {
   render() {
-    const { items, auth } = this.props;
+    const { items } = this.props;
     return (
       <div className="dashboard container">
         <div className="row">

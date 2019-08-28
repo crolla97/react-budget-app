@@ -5,7 +5,6 @@ import moment from 'moment';
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
-import { Redirect } from 'react-router-dom';
 
 class CreateItemPage extends Component {
   state = {
@@ -22,7 +21,6 @@ class CreateItemPage extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();    
-    // console.log(this.state);
     this.props.createItem(this.state)
     console.log(this.state);
   }

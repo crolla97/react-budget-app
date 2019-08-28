@@ -41,8 +41,8 @@ class Filter extends Component {
           <label>Sort By Date/Amount</label>
           <select 
             className="browser-default"
-            defaultValue={this.props.filters.sortBy}
-            onChange={this.onSortChange}
+            // defaultValue={this.props.filters.sortBy}
+            // onChange={this.onSortChange}
           >
             <option value="date">Date</option>
             <option value="amount">Amount</option>

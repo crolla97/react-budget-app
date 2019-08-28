@@ -17,9 +17,13 @@ firebase.initializeApp(fbConfig);
 
 const firestore = firebase.firestore();
 const auth = firebase.auth();
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+googleAuthProvider.addScope('profile');
+googleAuthProvider.addScope('email');
 
 export {
   firebase,
   firestore,
-  auth
+  auth,
+  googleAuthProvider
 };
