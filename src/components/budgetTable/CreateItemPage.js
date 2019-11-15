@@ -10,7 +10,7 @@ class CreateItemPage extends Component {
   state = {
     title: '',
     amount: 0,
-    type: '',
+    type: 'expense',
     createdAt: moment(),
     calendarFocused: false
   }
@@ -23,6 +23,7 @@ class CreateItemPage extends Component {
     e.preventDefault();    
     this.props.createItem(this.state)
     console.log(this.state);
+    this.props.history.push('/dashboard');
   }
   onDateChange = (createdAt) => {
     this.setState(() => ({ createdAt }))
@@ -39,7 +40,7 @@ class CreateItemPage extends Component {
             <div className="row">
               <div className="input-field col s12 m6">
                 <label htmlFor="title">Expense Title</label>
-                <input type="text" id="title" onChange={this.handleChange}/>
+                <input type="text" id="title" onChange={this.handleChange} required/>
               </div>
               <div className="input-field col s12 m6">
                 <SingleDatePicker
@@ -54,14 +55,13 @@ class CreateItemPage extends Component {
               </div>
             </div>
             <div className="row">
-              <select className="browser-default col s12 m6" id="type" defaultValue="none" onChange={this.handleChange}>
-                <option value="none" disabled hidden>Choose your option</option>
+              <select className="browser-default col s12 m6" id="type" defaultValue="expense" onChange={this.handleChange} required>
                 <option value="expense">Expense</option>
                 <option value="income">Income</option>
               </select>
               <div className="input-field col s12 m6">
                 <label htmlFor="amount">Amount</label>
-                <input type="number" id="amount" onChange={this.handleChange}/>
+                <input type="number" id="amount" onChange={this.handleChange} required/>
               </div>
               
             </div>

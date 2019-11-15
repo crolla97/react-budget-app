@@ -1,12 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Navbar from '../components/layouts/Navbar';
 import { Route, Redirect } from 'react-router-dom';
 
-export const PrivateRoute = (props) => (
-  props.isAuthenticated
-  ? <Route {...props} />
-  : <Redirect to='/' />
-);
+export const PrivateRoute = ({
+  isAuthenticated,
+  component: Component,
+  ...rest
+}) => (
+  <Route {...rest} component={(props) => (
+    isAuthenticated ? (
+      <div>
+        <Navbar />
+        <Component {...props} />
+      </div>
+    ) : (
+      <Redirect to='/' />
+    )
+  )}
+  />
+)
 
 const mapStateToProps = (state) => ({
   isAuthenticated: !!state.auth.uid
